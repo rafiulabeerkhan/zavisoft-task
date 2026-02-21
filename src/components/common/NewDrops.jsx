@@ -1,14 +1,10 @@
-import React from "react";
-import  useProducts  from "../../hooks/Products/useProducts";
-import shoe01 from "../../assets/ProductPictures/Shoe-01.png";
-import shoe02 from "../../assets/ProductPictures/Shoe-02.png";
-import shoe03 from "../../assets/ProductPictures/Shoe-03.png";
-import shoe04 from "../../assets/ProductPictures/Shoe-04.png";
-
-const images = [shoe01, shoe02, shoe03, shoe04];
+import { useNavigate } from "react-router-dom";
+import useProducts from "../../hooks/Products/useProducts";
 
 export default function NewDrops() {
   const { products, loading, error } = useProducts(8);
+  const navigate = useNavigate();
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
 
@@ -27,7 +23,7 @@ export default function NewDrops() {
 
       {/* Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {products.map((product, index) => (
+        {products.map((product) => (
           <div
             key={product.id}
             className="bg-white rounded-2xl shadow-md hover:shadow-lg transition overflow-hidden flex flex-col"
@@ -35,7 +31,11 @@ export default function NewDrops() {
             {/* Image */}
             <div className="w-full aspect-square overflow-hidden pt-0.5">
               <img
-                src={images[index % images.length]}
+                src={
+                  product.images?.length
+                    ? product.images[0]
+                    : "/placeholder.png"
+                }
                 alt={product.title}
                 className="w-full h-full object-cover hover:scale-105 transition duration-300"
               />
@@ -49,7 +49,16 @@ export default function NewDrops() {
               </h3>
 
               {/* Button + Price */}
-              <button className="mt-auto w-full bg-gray-900 text-white text-sm py-2.5 rounded-lg hover:bg-gray-800 transition flex justify-between items-center px-3">
+              {/* <button className="mt-auto w-full bg-gray-900 text-white text-sm py-2.5 rounded-lg hover:bg-gray-800 transition flex justify-between items-center px-3">
+                <span>View Product</span>
+                <span className="text-yellow-400 font-semibold">
+                  ${product.price}
+                </span>
+              </button> */}
+              <button
+                onClick={() => navigate(`/product/${product.id}`)}
+                className="mt-auto w-full bg-gray-900 text-white text-sm py-2.5 rounded-lg hover:bg-gray-800 transition flex justify-between items-center px-3"
+              >
                 <span>View Product</span>
                 <span className="text-yellow-400 font-semibold">
                   ${product.price}

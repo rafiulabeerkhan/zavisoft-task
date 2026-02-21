@@ -98,7 +98,7 @@ export default function Categories() {
                   index === 0 ? "rounded-tl-3xl" : ""
                 } overflow-hidden relative group`}
               >
-                <div className="aspect-[16/10] flex items-center justify-center">
+                <div className="aspect-16/10 flex items-center justify-center">
                   <img
                     src={category.image}
                     alt={category.name}

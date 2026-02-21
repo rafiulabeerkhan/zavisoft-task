@@ -1,29 +1,30 @@
 import Navbar from "./components/layout/Navbar";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Footer from "./components/layout/Footer";
+import LandingPage from "./pages/LandingPage";
+import ProductDetails from "./pages/ProductDetails";
 
-import doItRight from "../src/assets/MainContent/doItRight.svg";
-import nikeAirMax from "../src/assets/MainContent/NIkeAirMax.svg";
-import NewDrops from "./components/common/NewDrops";
-import Categories from "./components/common/Categories";
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#FAFAFA] flex flex-col">
-      {/* Navbar */}
-      <Navbar />
+    <Router>
+      <div className="min-h-screen bg-[#FAFAFA] flex flex-col overflow-x-hidden">
+        <Navbar />
 
-      {/* Main content */}
-      {/* <main className="flex-1 px-4 sm:px-8 md:px-16 py-10 bg-[#FAFAFA] mt-5"> */}
-      <main className="flex-1 px-4 sm:px-8 md:px-16 py-10 mt-5 space-y-8">
-        <div className="mt-8 justify-center items-center">
-          <img src={doItRight} alt="Do It Right" />
-        </div>
-        <div>
-          <img src={nikeAirMax} alt="NikeAirMax" />
-        </div>
-        <NewDrops />
-        <Categories/>
-      </main>
-    </div>
+        <main className="flex-1 px-4 sm:px-8 md:px-16 py-10 mt-5 space-y-8">
+          <Routes>
+            {/* Home page */}
+            <Route path="/" element={<LandingPage />} />
+
+            {/* Product details page */}
+            <Route path="/product/:id" element={<ProductDetails />} />
+          </Routes>
+        </main>
+
+        <Footer />
+      </div>
+    </Router>
+    
   );
 }
 
