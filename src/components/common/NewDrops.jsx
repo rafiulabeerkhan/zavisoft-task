@@ -1,5 +1,5 @@
 import React from "react";
-import { useProducts } from "../../hooks/Products/useProducts";
+import  useProducts  from "../../hooks/Products/useProducts";
 import shoe01 from "../../assets/ProductPictures/Shoe-01.png";
 import shoe02 from "../../assets/ProductPictures/Shoe-02.png";
 import shoe03 from "../../assets/ProductPictures/Shoe-03.png";

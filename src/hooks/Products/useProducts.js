@@ -1,29 +1,26 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { getProducts } from "../../services/productService";
 
-export function useProducts() {
+export default function useProducts(limit = null) {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchProducts = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const { data } = await axios.get(
-        `https://api.escuelajs.co/api/v1/products`
-      );
-      setProducts(data);
-    } catch (err) {
-      setError(err.message || "Something went wrong");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    const fetchProducts = async () => {
+      try {
+        const data = await getProducts();
+       
+        setProducts(limit ? data.slice(0, limit) : data);
+      } catch (err) {
+        setError(err.response?.data?.message || err.message || "Something went wrong");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  return { products, loading, error, fetchProducts };
+    fetchProducts();
+  }, [limit]);
+
+  return { products, loading, error };
 }
