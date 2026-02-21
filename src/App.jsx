@@ -3,6 +3,7 @@ import Navbar from "./components/layout/Navbar";
 import doItRight from "../src/assets/MainContent/doItRight.svg";
 import nikeAirMax from "../src/assets/MainContent/NIkeAirMax.svg";
 import NewDrops from "./components/common/NewDrops";
+import Categories from "./components/common/Categories";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <img src={nikeAirMax} alt="NikeAirMax" />
         </div>
         <NewDrops />
+        <Categories/>
       </main>
     </div>
   );
