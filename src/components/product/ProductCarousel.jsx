@@ -9,8 +9,8 @@ const ProductCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
 
-  const totalSteps = 4; // number of sections
-  const scrollAmount = 320; // same value you use
+  const totalSteps = 4;
+  const scrollAmount = 320;
 
   const handleScroll = () => {
     const el = scrollRef.current;
@@ -57,7 +57,6 @@ const ProductCarousel = () => {
 
   return (
     <div className="bg-[#F4F4F4] py-10 px-6">
-      {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">You may also like</h2>
 
@@ -78,7 +77,6 @@ const ProductCarousel = () => {
         </div>
       </div>
 
-      {/* Carousel */}
       <div
         ref={scrollRef}
         onScroll={handleScroll}

@@ -24,7 +24,6 @@ export default function Categories() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Reset index if categories change
   useEffect(() => {
     setCurrentIndex(0);
   }, [categories]);
@@ -55,7 +54,6 @@ export default function Categories() {
   return (
     <section className="bg-[#1F1F1F] px-4 sm:px-8 md:px-16 py-12">
       
-      {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-wide">
           CATEGORIES
@@ -80,7 +78,6 @@ export default function Categories() {
         </div>
       </div>
 
-      {/* Slider */}
       <div className="overflow-hidden">
         <div
           className="flex transition-transform duration-500 ease-in-out"

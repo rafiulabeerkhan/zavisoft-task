@@ -4,6 +4,7 @@ import card from "../../assets/Logo/UserIcon.svg";
 import user from "../../assets/Logo/User.svg";
 import search from "../../assets/Logo/Search.svg";
 import down from "../../assets/Logo/dropDownIcon.svg";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -11,11 +12,8 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 w-full bg-white border-b border-gray-200 z-50">
       <div className="max-w-7xl mx-2 sm:mx-auto px-3 sm:px-5 rounded-2xl bg-[##FAFAFA] overflow-hidden">
-        
         <div className="flex items-center justify-between h-15 relative border-b-[##FAFAFA]">
-          {/* LEFT SECTION */}
           <div className="flex items-center gap-8">
-            {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-8">
               <a
                 href="#"
@@ -24,7 +22,6 @@ export default function Navbar() {
                 New Drops 🔥
               </a>
 
-              {/* Men Dropdown */}
               <div className="relative group">
                 <button className="flex items-center gap-1 text-gray-800 font-Rubik hover:text-black transition">
                   Men
@@ -43,7 +40,6 @@ export default function Navbar() {
                 </div>
               </div>
 
-              {/* Women Dropdown */}
               <div className="relative group">
                 <button className="flex items-center gap-1 text-gray-800 font-Rubik hover:text-black transition">
                   Women
@@ -63,7 +59,6 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* MOBILE HAMBURGER */}
             <button
               className="md:hidden flex items-center text-gray-800"
               onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
@@ -92,30 +87,24 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* CENTER LOGO */}
           <div className="absolute left-1/2 -translate-x-1/2">
-            <img src={logo} alt="Logo" className="h-8" />
+            <Link to="/">
+              <img src={logo} alt="Logo" className="h-8 cursor-pointer" />
+            </Link>
           </div>
 
-          {/* RIGHT SECTION */}
           <div className="flex items-center gap-4 md:gap-6 ml-auto shrink-0">
-            {/* Search */}
             <button className="text-gray-700 hover:text-black transition">
               <img src={search} alt="Search" className="h-6 md:h-8" />
             </button>
-
-            {/* User */}
             <button className="text-gray-700 hover:text-black transition">
               <img src={user} alt="User" className="h-6 md:h-8" />
             </button>
-
-            {/* Cart */}
             <button className="text-gray-700 hover:text-black transition">
               <img src={card} alt="Cart" className="h-6 md:h-8" />
             </button>
           </div>
         </div>
-        {/* MOBILE MENU */}
         <div
           className={`md:hidden mt-2 flex flex-col gap-2 pb-4 transition-all duration-300 ${
             isMobileMenuOpen
@@ -130,7 +119,6 @@ export default function Navbar() {
             New Drops 🔥
           </a>
 
-          {/* Men Mobile Dropdown */}
           <div className="flex flex-col gap-1">
             <button className="flex items-center justify-between px-4 py-2 text-gray-800 font-Rubik hover:bg-gray-100 rounded transition">
               Men
@@ -149,7 +137,6 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Women Mobile Dropdown */}
           <div className="flex flex-col gap-1">
             <button className="flex items-center justify-between px-4 py-2 text-gray-800 font-Rubik hover:bg-gray-100 rounded transition">
               Women

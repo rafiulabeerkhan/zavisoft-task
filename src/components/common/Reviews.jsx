@@ -4,7 +4,6 @@ import Review01 from "../../assets/ReviewPictures/ReviewPic-01.png";
 import Review02 from "../../assets/ReviewPictures/ReviewPic-02.png";
 import Review03 from "../../assets/ReviewPictures/ReviewPic-03.png";
 
-// Sample review data
 const reviews = [
   {
     id: 1,
@@ -36,12 +35,10 @@ export default function Reviews() {
   const [showAll, setShowAll] = useState(false);
   return (
     <section className="px-4 sm:px-8 md:px-16 py-12 bg-gray-100">
-      {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-wide">
           REVIEWS
         </h2>
-        {/* Toggle button for mobile */}
         <button
           className="bg-[#4A69E2] text-white px-4 py-1 rounded-md hover:bg-blue-700 transition text-sm"
           onClick={() => setShowAll(!showAll)}
@@ -49,8 +46,6 @@ export default function Reviews() {
           {showAll ? "SHOW LESS" : "SEE ALL"}
         </button>
       </div>
-
-      {/* Reviews Grid */}
       <div
         className={`grid gap-6 transition-all duration-500 ${
           showAll
@@ -65,7 +60,6 @@ export default function Reviews() {
               !showAll && index > 0 ? "hidden sm:block md:block" : ""
             }`}
           >
-            {/* Review Text */}
             <div className="relative bg-white rounded-lg overflow-hidden">
               <img
                 src={review.avatar}
@@ -90,8 +84,6 @@ export default function Reviews() {
                 </div>
               </div>
             </div>
-
-            {/* Review Image */}
             <div className="aspect-[16/10] overflow-hidden">
               <img
                 src={review.image}
