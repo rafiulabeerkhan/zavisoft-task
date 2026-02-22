@@ -37,14 +37,14 @@ const ProductCarousel = () => {
     }
   };
 
-  if (loading) {
+
+  if (loading)
     return (
-      <div className="py-10 px-6">
+      <div className="flex justify-center items-center h-40">
         <h2 className="text-2xl font-bold mb-6">You may also like</h2>
-        <p>Loading products...</p>
+        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
-  }
 
   if (error) {
     return (

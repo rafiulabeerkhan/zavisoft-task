@@ -8,7 +8,6 @@ export default function Categories() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(2);
 
-
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
@@ -32,20 +31,19 @@ export default function Categories() {
   const maxIndex = totalItems - itemsPerView;
 
   const handleNext = () => {
-    setCurrentIndex((prev) =>
-      prev < maxIndex ? prev + 1 : prev
-    );
+    setCurrentIndex((prev) => (prev < maxIndex ? prev + 1 : prev));
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prev) =>
-      prev > 0 ? prev - 1 : prev
-    );
+    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : prev));
   };
 
-  if (loading) {
-    return <p className="text-white p-10">Loading...</p>;
-  }
+  if (loading)
+    return (
+      <div className="flex justify-center items-center h-40">
+        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
 
   if (error) {
     return <p className="text-red-500 p-10">{error}</p>;
@@ -53,7 +51,6 @@ export default function Categories() {
 
   return (
     <section className="bg-[#1F1F1F] px-4 sm:px-8 md:px-16 py-12">
-      
       <div className="flex items-center justify-between mb-8">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-wide">
           CATEGORIES
@@ -86,10 +83,7 @@ export default function Categories() {
           }}
         >
           {categories.map((category, index) => (
-            <div
-              key={category.id}
-              className="min-w-full md:min-w-[50%] px-2"
-            >
+            <div key={category.id} className="min-w-full md:min-w-[50%] px-2">
               <div
                 className={`bg-[#FAFAFA] ${
                   index === 0 ? "rounded-tl-3xl" : ""
