@@ -50,7 +50,7 @@ export default function Reviews() {
         className={`grid gap-6 transition-all duration-500 ${
           showAll
             ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
-            : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-h-[700px] overflow-hidden"
+            : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-h-175 overflow-hidden"
         }`}
       >
         {reviews.map((review, index) => (
@@ -84,7 +84,7 @@ export default function Reviews() {
                 </div>
               </div>
             </div>
-            <div className="aspect-[16/10] overflow-hidden">
+            <div className="aspect-16/10 overflow-hidden">
               <img
                 src={review.image}
                 alt="Review"
