@@ -1,6 +1,6 @@
 const ProductCard = ({ product }) => {
   return (
-    <div className="min-w-[280px] bg-white rounded-3xl p-4 shadow-sm">
+    <div className="min-w-70 bg-white rounded-3xl p-2 shadow-sm">
       <div className="relative rounded-2xl overflow-hidden">
         {/* Badge */}
         <span

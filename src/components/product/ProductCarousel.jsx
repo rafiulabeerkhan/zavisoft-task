@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ProductCard from "./ProductCard";
 import useProducts from "../../hooks/Products/useProducts";
@@ -6,17 +6,35 @@ import useProducts from "../../hooks/Products/useProducts";
 const ProductCarousel = () => {
   const { products, loading, error } = useProducts(8);
   const scrollRef = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  const totalSteps = 4; // number of sections
+  const scrollAmount = 320; // same value you use
+
+  const handleScroll = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const maxScroll = el.scrollWidth - el.clientWidth;
+    const progress = (el.scrollLeft / maxScroll) * 100;
+
+    setScrollProgress(progress);
+  };
 
   const scroll = (direction) => {
     const { current } = scrollRef;
-    const scrollAmount = 320;
-
     if (!current) return;
 
-    current.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
-      behavior: "smooth",
-    });
+    if (direction === "right" && currentIndex < totalSteps - 1) {
+      current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      setCurrentIndex((prev) => prev + 1);
+    }
+
+    if (direction === "left" && currentIndex > 0) {
+      current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      setCurrentIndex((prev) => prev - 1);
+    }
   };
 
   if (loading) {
@@ -63,12 +81,23 @@ const ProductCarousel = () => {
       {/* Carousel */}
       <div
         ref={scrollRef}
+        onScroll={handleScroll}
         className="flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide"
       >
         {products?.map((product) => (
-          <div key={product.id} className="min-w-[280px]">
+          <div key={product.id} className="min-w-70">
             <ProductCard product={product} />
           </div>
+        ))}
+      </div>
+      <div className="flex justify-center gap-3 mt-4">
+        {[...Array(totalSteps)].map((_, index) => (
+          <div
+            key={index}
+            className={`h-2 w-12 rounded-full transition-all duration-300 ${
+              index <= currentIndex ? "bg-blue-600" : "bg-gray-300"
+            }`}
+          />
         ))}
       </div>
     </div>
