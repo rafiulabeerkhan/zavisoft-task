@@ -16,13 +16,13 @@ Vite
 
 Tailwind CSS
 
-React Router (if you used it)
+React Router
 
-Netlify (Deployment)
+Netlify
 
 ✨ Features
 
-Responsive design (mobile-first)
+Responsive design
 
 Clean component structure
 
